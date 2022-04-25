@@ -12,7 +12,7 @@ mongoose
   .connect(DB, {
     useNewUrlParser: true,
   })
-  .then((con) => console.log('DB connection successful!'));
+  .then(() => console.log('DB connection successful!'));
 
 // const testTour = new Tour({
 //   name: 'The Forest Hiker3',
@@ -30,7 +30,9 @@ mongoose
 //   });
 
 const app = require('./app');
+
 console.log(process.env);
+
 //START SERVER
 const port = process.env.PORT || 3000; // default
 app.listen(port, () => {
