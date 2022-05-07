@@ -4,7 +4,6 @@ import { displayMap } from './mapbox';
 import { login, logout } from './login';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
-import { showAlert } from './alerts';
 
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
@@ -21,7 +20,7 @@ if (mapBox) {
 }
 
 if (loginForm)
-  loginForm.addEventListener('submit', (e) => {
+  loginForm.addEventListener('submit', e => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
@@ -31,18 +30,19 @@ if (loginForm)
 if (logOutBtn) logOutBtn.addEventListener('click', logout);
 
 if (userDataForm)
-  userDataForm.addEventListener('submit', (e) => {
+  userDataForm.addEventListener('submit', e => {
     e.preventDefault();
     const form = new FormData();
     form.append('name', document.getElementById('name').value);
     form.append('email', document.getElementById('email').value);
     form.append('photo', document.getElementById('photo').files[0]);
+    console.log(form);
 
     updateSettings(form, 'data');
   });
 
 if (userPasswordForm)
-  userPasswordForm.addEventListener('submit', async (e) => {
+  userPasswordForm.addEventListener('submit', async e => {
     e.preventDefault();
     document.querySelector('.btn--save-password').textContent = 'Updating...';
 
@@ -61,11 +61,8 @@ if (userPasswordForm)
   });
 
 if (bookBtn)
-  bookBtn.addEventListener('click', (e) => {
+  bookBtn.addEventListener('click', e => {
     e.target.textContent = 'Processing...';
     const { tourId } = e.target.dataset;
     bookTour(tourId);
   });
-
-const alertMessage = document.querySelector('body').dataset.alert;
-if (alertMessage) showAlert('success', alertMessage, 20);
