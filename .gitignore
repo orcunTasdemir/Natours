@@ -1,5 +1,14 @@
 .DS_Store
 config.env
+.cache/
+dev-data/
+natours-postman-collection.json
+LICENSE
+.eslintrc.json
+.gitattributes
+.prettierrc
+
+
 # Logs
 logs
 *.log
