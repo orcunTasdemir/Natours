@@ -4,9 +4,7 @@ config.env
 dev-data/
 natours-postman-collection.json
 LICENSE
-.eslintrc.json
 .gitattributes
-.prettierrc
 
 
 # Logs
